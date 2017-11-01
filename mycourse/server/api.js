@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoClient = require('mongodb').MongoClient;
+const ObjectId = require('mongodb').ObjectID;
 const mongo_string = "mongodb://localhost:27017/cmcourse"
 
 
@@ -20,7 +21,6 @@ router.get('/show', function (req, res) {
 
 router.post('/add', function (req, res) {
     mongoClient.connect(mongo_string, function (err, db) {
-
     const data = {name : req.body.name };
     db.collection('course')
     .insertOne(data, (err, result)=>{
@@ -32,12 +32,33 @@ router.post('/add', function (req, res) {
 });
 })
 
-router.post('/update', function (req, res){
-    res.end("Hi update api: " + req.body.name);
-})
 
 router.delete('/delete/:name', function (req, res) {
-    res.end("Hi delete api: " + req.params.name);
+    //res.end("Hi delete api: " + req.params.name);
+    mongoClient.connect(mongo_string, function (err, db) {
+    const query = {name : req.params.name };
+    db.collection('course')
+    .deleteMany(query, function (err, result){
+        const response = {result : 'ok', message : result.result.n + " Deleted"};
+        res.json(response);
+    });
+    db.close();
+});
+})
+
+
+router.post('/update/:id', function (req, res) {
+    //res.end("Hi update api: ObjectId(" + req.params.id + ")" );
+    mongoClient.connect(mongo_string, function (err, db) {
+    const query = { _id : ObjectId(req.params.id) };
+    const newvalues = { $set: {name: req.body.name } };
+    db.collection('course')
+    .updateOne(query, newvalues, function (err, result){
+        const response = {result : 'ok', message : result.result.n + " Updated"};
+        res.json(response);
+    });
+    db.close();
+});
 })
 
 module.exports = router;
