@@ -21,7 +21,7 @@ router.get('/show', function (req, res) {
 router.post('/add', function (req, res) {
     mongoClient.connect(mongo_string, function (err, db) {
 
-    const data = {name : req.body.name };
+    const data = {name : req.body.name, size : req.body.size, sex : req.body.sex };
     db.collection('course')
     .insertOne(data, (err, result)=>{
         if (err) throw err;
