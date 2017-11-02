@@ -38,6 +38,12 @@ router.post('/update', function (req, res){
 
 router.delete('/delete/:name', function (req, res) {
     res.end("Hi delete api: " + req.params.name);
+    .updateOne(query, newvalues, function (err, result){
+        const response = {result : 'ok', message : result.result.n + " Updated"};
+        res.json(response);
+    });
+    db.close();
+});
 })
 
 module.exports = router;
