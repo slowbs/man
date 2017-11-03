@@ -4,19 +4,43 @@ import { NgModule } from '@angular/core';
 
 import { HttpModule } from '@angular/http';
 import { FormsModule } from "@angular/forms";
+import { RouterModule } from "@angular/router";
 
 import { AppComponent } from './app.component';
 import { UserComponent } from './components/user/user.component';
+import { KanaComponent } from './components/kana/kana.component';
+
+RouterModule.forRoot([
+  {
+    path: 'user',
+    component: UserComponent
+  },
+  {
+    path: 'kana',
+    component: KanaComponent
+  }
+])
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserComponent
+    UserComponent,
+    KanaComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot([
+      {
+        path: 'user',
+        component: UserComponent
+      },
+      {
+        path: 'kana',
+        component: KanaComponent
+      }
+    ])
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

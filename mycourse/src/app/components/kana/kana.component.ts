@@ -1,40 +1,42 @@
 import { DataService } from './../../data.service';
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+  selector: 'app-kana',
+  templateUrl: './kana.component.html',
+  styleUrls: ['./kana.component.css']
 })
-export class UserComponent {
+export class KanaComponent implements OnInit {
   private result:Array<any>;
   private name:string;
 
   constructor(private dataService:DataService) {
-    this.onLoad2();
+    this.onLoad();
   }
 
   onAdd(){
     this.dataService.addCourse(this.name).subscribe(res=>{
       console.log(res);
-      this.onLoad2();
+      this.onLoad();
     });
   }
 
   onDelete(name:string){
     this.dataService.deleteCourse(name).subscribe(res=>{
       console.log(res);
-      this.onLoad2();
+      this.onLoad();
     })
 
   }
 
 
-  onLoad2(){
-    this.dataService.getCourse2().subscribe(res=>{
+  onLoad(){
+    this.dataService.getCourse().subscribe(res=>{
       console.log(res);
     this.result = res;
   });
-}
+  }
+  ngOnInit() {
+  }
+
 }

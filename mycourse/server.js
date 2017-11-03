@@ -8,6 +8,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 app.use('/api',require('./server/api.js'));
+app.use('/user',require('./server/user.js'));
 
 app.use('*', function (req, res) {
     //res.end("Hi we are QA");

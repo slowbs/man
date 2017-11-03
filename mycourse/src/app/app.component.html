@@ -1,17 +1,10 @@
 <h1>TEst Test</h1>
-
-<form>
-    <label for="name">Name</label>
-    <input type="text" [(ngModel)]="name" name="name">
-</form>
-
-<button (click)="onAdd()">Submit</button>
+<a routerLink="/user">User</a>
+<a routerLink="/kana">Kana</a>
+<router-outlet></router-outlet>
 
 
-<ul>
-    <li *ngFor="let item of result">{{item.name}} <button (click)="onDelete
-    (item.name)">X</button></li>
-</ul>
+
 
 
 
