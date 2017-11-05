@@ -11,9 +11,13 @@ export class DataService {
     return this.http.get('/api/show').map(res=>res.json().message);
   }
 
-  /*getCourse2(){
-    return this.http.get('/user/show').map(res=>res.json().message);
-  }*/
+  getCourse2(id:string){
+    return this.http.get('/saka/show/' + id).map(res=>res.json().message);
+  }
+
+  getCourse3(id:string){
+    return this.http.get('/saka/show' + id).map(res=>res.json().message);
+  }
 
   deleteCourse(course:string){
     return this.http.delete('/api/delete/' + course).map(res=>res.json().message);

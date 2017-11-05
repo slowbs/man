@@ -9,23 +9,17 @@ import { RouterModule } from "@angular/router";
 import { AppComponent } from './app.component';
 import { UserComponent } from './components/user/user.component';
 import { KanaComponent } from './components/kana/kana.component';
+import { SakaComponent } from './components/saka/saka.component';
+import { AboutSakaComponent } from './components/saka/about-saka.component';
 
-RouterModule.forRoot([
-  {
-    path: 'user',
-    component: UserComponent
-  },
-  {
-    path: 'kana',
-    component: KanaComponent
-  }
-])
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
-    KanaComponent
+    KanaComponent,
+    SakaComponent,
+    AboutSakaComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +33,15 @@ RouterModule.forRoot([
       {
         path: 'kana',
         component: KanaComponent
-      }
+      },
+      {
+        path: 'saka',
+        component: SakaComponent
+      },
+      {
+        path: 'saka/:username',
+        component: AboutSakaComponent
+      },
     ])
   ],
   providers: [DataService],

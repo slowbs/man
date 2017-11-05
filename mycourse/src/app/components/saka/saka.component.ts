@@ -1,18 +1,21 @@
-import { DataService } from './../../data.service';
 import { Component, OnInit } from '@angular/core';
+import { DataService } from './../../data.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-kana',
-  templateUrl: './kana.component.html',
-  styleUrls: ['./kana.component.css']
+  selector: 'app-saka',
+  templateUrl: './saka.component.html',
+  styleUrls: ['./saka.component.css']
 })
-export class KanaComponent implements OnInit {
+export class SakaComponent implements OnInit {
   private result:Array<any>;
   private name:string;
 
   constructor(private dataService:DataService) {
     this.onLoad();
   }
+
+
 
   onAdd(){
     if(name !== null && name !== '') {
