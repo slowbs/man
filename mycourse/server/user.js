@@ -5,11 +5,12 @@ const ObjectId = require('mongodb').ObjectID;
 const mongo_string = "mongodb://localhost:27017/cmcourse"
 
 
-router.post('/show/:name', function (req, res) {
-    //res.end("Hi, show api");
+router.get('/show/:username', function (req, res) {
+    const query = {name : req.params.username};
+    //res.end("Hi," + search);
     mongoClient.connect(mongo_string, function (req, db) {
         db.collection("course")
-        .find({name: req.body.name})
+        .find(query)
         .toArray()
         .then(course=> {
             const output = {result : "ok", message : course}
@@ -18,6 +19,7 @@ router.post('/show/:name', function (req, res) {
         db.close();
     });
 })
+
 
 router.post('/add', function (req, res) {
     mongoClient.connect(mongo_string, function (err, db) {
@@ -31,8 +33,6 @@ router.post('/add', function (req, res) {
     db.close();
 });
 })
-
-
 
 
 router.delete('/delete/:name', function (req, res) {

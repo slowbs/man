@@ -1,13 +1,6 @@
 <h1>User Test</h1>
-<form>
-    <label for="name">Name</label>
-    <input type="text" [(ngModel)]="name" name="name" id="search">
-</form>
-
-<button (click)="onLoad2()">Submit</button>
-
-
 <ul>
-    <li *ngFor="let item of result">{{item.name}} <button (click)="onDelete
-    (item.name)">X</button></li>
+    <li *ngFor="let item of number">{{item.name}}</li>
 </ul>
+<input type="text" [(ngModel)]="username" name="username">
+<button (click)="getNameInfo()">Submit</button>

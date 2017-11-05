@@ -12,7 +12,7 @@ app.use('/user',require('./server/user.js'));
 
 app.use('*', function (req, res) {
     //res.end("Hi we are QA");
-    res.sendfile(path.join(__dirname, 'index.html'));
+    res.sendFile(path.join(__dirname, 'dist/index.html'));
 })
 
 const server = app.listen(8081, function () {
