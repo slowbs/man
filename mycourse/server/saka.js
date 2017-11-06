@@ -5,8 +5,8 @@ const ObjectId = require('mongodb').ObjectID;
 const mongo_string = "mongodb://localhost:27017/cmcourse"
 
 
-router.get('/show/:id', function (req, res) {
-    const query = {name : req.params.id};
+router.get('/show/:username', function (req, res) {
+    const query = {name : req.params.username};
     //res.end("Hi, show api");
     mongoClient.connect(mongo_string, function (req, db) {
         db.collection("course")

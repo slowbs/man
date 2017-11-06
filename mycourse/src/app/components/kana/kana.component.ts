@@ -15,12 +15,12 @@ export class KanaComponent implements OnInit {
   }
 
   onAdd(){
-    if(name !== null && name !== '') {
+    //if(name !== null && name !== '') {
     this.dataService.addCourse(this.name).subscribe(res=>{
       console.log(res);
       this.onLoad();
     });
-  }
+  //}
 }
 
   onDelete(name:string){

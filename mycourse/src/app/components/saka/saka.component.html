@@ -9,6 +9,6 @@
 
 
 <ul>
-    <li *ngFor="let item of result"><a [routerLink]="['/saka',item.name]">{{item.name}}</a> <button (click)="onDelete
+    <li *ngFor="let item of result">{{item.name}}<button (click)="onDelete
     (item.name)">X</button></li>
 </ul>

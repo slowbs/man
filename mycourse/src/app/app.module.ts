@@ -35,13 +35,13 @@ import { AboutSakaComponent } from './components/saka/about-saka.component';
         component: KanaComponent
       },
       {
-        path: 'saka',
+        path: 'saka/:id',
         component: SakaComponent
       },
-      {
+      /*{
         path: 'saka/:username',
         component: AboutSakaComponent
-      },
+      },*/
     ])
   ],
   providers: [DataService],

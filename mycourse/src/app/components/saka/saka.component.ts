@@ -8,40 +8,26 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./saka.component.css']
 })
 export class SakaComponent implements OnInit {
-  private result:Array<any>;
-  private name:string;
+    private result:Array<any>;
 
-  constructor(private dataService:DataService) {
+  constructor(private route: ActivatedRoute, private dataService:DataService) {
     this.onLoad();
-  }
-
-
-
-  onAdd(){
-    if(name !== null && name !== '') {
-    this.dataService.addCourse(this.name).subscribe(res=>{
-      console.log(res);
-      this.onLoad();
-    });
-  }
-}
-
-  onDelete(name:string){
-    this.dataService.deleteCourse(name).subscribe(res=>{
-      console.log(res);
-      this.onLoad();
-    })
-
-  }
-
-
+    
+      }
   onLoad(){
-    this.dataService.getCourse().subscribe(res=>{
-      console.log(res);
-    this.result = res;
-  });
-  }
+    let username = this.route.snapshot.params.id;
+    console.log(username);
+      this.dataService.getCourse3(username).subscribe(res=>{
+          console.log(res);
+        this.result = res;
+      });
+      }
+
+ 
   ngOnInit() {
+
+
+      
   }
 
 }

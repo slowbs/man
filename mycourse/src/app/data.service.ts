@@ -15,8 +15,8 @@ export class DataService {
     return this.http.get('/saka/show/' + id).map(res=>res.json().message);
   }
 
-  getCourse3(id:string){
-    return this.http.get('/saka/show' + id).map(res=>res.json().message);
+  getCourse3(username:string){
+    return this.http.get('/saka/show/' + username).map(res=>res.json().message);
   }
 
   deleteCourse(course:string){
@@ -24,9 +24,11 @@ export class DataService {
   }
 
   addCourse(course:string){
+    if( course != null && course !== "" ){
     const data = { name:course };
     return this.http.post('/api/add', data).map(res=>res.json().message);
   }
+}
 
   public getNameDetail(username:string) {
     return this.http.get('/user/show/' + username).map(res=>res.json().message);
